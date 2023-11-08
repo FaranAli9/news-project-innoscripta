@@ -27,10 +27,7 @@ const Login = () => {
 				layout="vertical"
 				name="login-form"
 				className="tw-max-w-full tw-w-96"
-				initialValues={{
-					email: 'faran@gmail.com',
-					password: 'manager',
-				}}
+				initialValues={{}}
 				onFinish={handleLogin}
 			>
 				<Form.Item
