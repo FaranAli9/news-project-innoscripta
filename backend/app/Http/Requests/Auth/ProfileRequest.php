@@ -19,7 +19,7 @@ class ProfileRequest extends FormRequest
         return [
             'name'     => ['required'],
             'email'    => ['required', 'email', 'unique:users,email,'.auth()->id()],
-            'password' => ['sometimes', 'confirmed'],
+            'password' => ['sometimes', 'confirmed', 'min:6'],
         ];
     }
 }
