@@ -40,7 +40,7 @@ class User extends Authenticatable implements JWTSubject
     {
         $name  = collect(explode(' ', $this->name));
         $first = $name->first();
-        $last  = $name->last();
+        $last  = $name->count() > 1 ? $name->last() : '';
 
         return Attribute::make(
             get: fn () => (strlen($first) ? $first[0] : null).($last ? $last[0] : null)
