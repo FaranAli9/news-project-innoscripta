@@ -54,7 +54,7 @@ const Feed = () => {
 				setLoading(false)
 			})
 	}
-	useEffect(get, [filters, page])
+	useEffect(get, [filters, page, defaultPreferences])
 	return (
 		<>
 			<FeedFilters onSearch={handleFiltersChanged} />
