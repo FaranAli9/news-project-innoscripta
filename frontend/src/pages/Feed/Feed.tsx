@@ -37,8 +37,9 @@ const Feed = () => {
 		const categories = [...filters.categories, ...defaultPreferences.categories]
 		const authors = [...filters.authors, ...defaultPreferences.authors]
 		const sources = [...filters.sources, ...defaultPreferences.sources]
+		const search = filters.search
 		api
-			.get(ziggy('feed.index', { categories, authors, sources, page }))
+			.get(ziggy('feed.index', { search, categories, authors, sources, page }))
 			.then(({ data }) => {
 				const _paginator = data.articles
 				setArticles((_articles) =>
