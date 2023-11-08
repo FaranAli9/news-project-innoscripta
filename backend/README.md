@@ -48,4 +48,9 @@ To test the News APIs you can run:
 
 `vendor/bin/sail php artisan news:fetch:all` -- New York Times
 
+### Note:
+Fetching from the APIs will only work if the `QUEUE_CONNECTION` is set to `redis` in the .env file
+
+You also need to run `vendor/bin/sail php artisan horizon` in a separate terminal to start processing the Jobs. Fetching all APIs should take about 11-12 minutes.
+
 
