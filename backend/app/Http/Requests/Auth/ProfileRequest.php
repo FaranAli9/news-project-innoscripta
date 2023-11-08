@@ -18,7 +18,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name'     => ['required'],
-            'email'    => ['required', 'unique:users,email,'.auth()->id()],
+            'email'    => ['required', 'email', 'unique:users,email,'.auth()->id()],
             'password' => ['sometimes', 'confirmed'],
         ];
     }
