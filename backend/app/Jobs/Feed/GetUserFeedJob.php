@@ -40,7 +40,6 @@ class GetUserFeedJob
                 Carbon::parse($range[0])->startOfDay()->toDateTimeString(),
                 Carbon::parse($range[1])->endOfDay()->toDateTimeString(),
             ];
-            dump($this->range);
         }
 
     }

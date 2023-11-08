@@ -18,6 +18,7 @@ const Feed = () => {
 		categories: [],
 		authors: [],
 		sources: [],
+		range: null,
 	})
 	const [page, setPage] = useState<number>(1)
 	const defaultPreferences = useLoaderData() as FeedPreferences
@@ -38,8 +39,18 @@ const Feed = () => {
 		const authors = [...filters.authors, ...defaultPreferences.authors]
 		const sources = [...filters.sources, ...defaultPreferences.sources]
 		const search = filters.search
+		const range = filters.range
 		api
-			.get(ziggy('feed.index', { search, categories, authors, sources, page }))
+			.get(
+				ziggy('feed.index', {
+					search,
+					categories,
+					authors,
+					sources,
+					range,
+					page,
+				}),
+			)
 			.then(({ data }) => {
 				const _paginator = data.articles
 				setArticles((_articles) =>
