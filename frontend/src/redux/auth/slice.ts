@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User } from 'src/types/models/user'
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
 const API_TOKEN = 'news_api_token'
 
@@ -11,7 +12,7 @@ export interface AuthState {
 
 // Define the initial state using that type
 const initialState: AuthState = {
-	token: localStorage.getItem(API_TOKEN)!,
+	token: getCookie(API_TOKEN)!,
 	user: null,
 }
 
@@ -21,7 +22,7 @@ export const authSlice = createSlice({
 	reducers: {
 		setToken(state, action: PayloadAction<string | null>) {
 			state.token = action.payload
-			localStorage.setItem(API_TOKEN, action.payload!)
+			setCookie(API_TOKEN, action.payload)
 		},
 		setUser(state, action: PayloadAction<User | null>) {
 			state.user = action.payload
@@ -29,7 +30,7 @@ export const authSlice = createSlice({
 		logout(state) {
 			state.token = null
 			state.user = null
-			localStorage.removeItem(API_TOKEN)
+			removeCookie(API_TOKEN)
 		},
 	},
 })
