@@ -17,6 +17,7 @@ import ProfileSettings from 'src/pages/Settings/ProfileSettings.tsx'
 import FeedSettings from 'src/pages/Settings/FeedSettings.tsx'
 import { feedPreferencesLoader } from 'src/loaders/feedPreferencesLoader.ts'
 import Register from 'src/pages/Auth/Register.tsx'
+import NotFound from 'src/pages/Errors/NotFound.tsx'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -64,6 +65,10 @@ const router = createBrowserRouter(
 					element={<Register />}
 				></Route>
 			</Route>
+			<Route
+				path="*"
+				element={<NotFound />}
+			/>
 		</>,
 	),
 )
